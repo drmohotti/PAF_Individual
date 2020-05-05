@@ -58,6 +58,17 @@ public class VisitsAPI extends HttpServlet {
 	protected void doPut(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		Visit visitObj = new Visit();
+
+		Map paras = getParasMap(request);
+		String output = visitObj.updateVisits(paras.get("visiting_id").toString(),
+		paras.get("hospital_name").toString(),
+		paras.get("hospital_city").toString(),
+		paras.get("date").toString(),
+		paras.get("time").toString(),
+		paras.get("noPatients").toString());
+
+		response.getWriter().write(output); 
 	}
 
 	/**
