@@ -48,10 +48,17 @@ public class Visit {
 			preparedStmt.execute();
 			con.close();
 
+			String newVisits = readVisits(); 
 			output = "\nYou have Inserted successfully";
+			output = "{\"status\":\"success\", \"data\": \"" +
+					 newVisits + "\"}"; 
+			
 
 		} catch (Exception e) {
-			output = "\nError while inserting12";
+			/*output = "\nError while inserting12";*/
+			
+			output = "{\"status\":\"error\", \"data\":"
+					+ "\"Error while inserting the Visiting Details.\"}"; 
 			System.err.println(e.getMessage());
 			System.out.println("not inserted");
 
