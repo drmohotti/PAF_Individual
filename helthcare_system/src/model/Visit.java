@@ -171,6 +171,7 @@ public class Visit {
 
 		try {
 			Connection con = connect();
+			
 			if (con == null) {
 				return "Error while connecting to the database for deleting.";
 			}
@@ -187,13 +188,21 @@ public class Visit {
 			// execute the statement
 			preparedStmt.execute();
 			con.close();
+			
+			String newVisits = readVisits();
+			 output = "{\"status\":\"success\", \"data\": \"" +
+			 newVisits + "\"}"; 
 
-			output = "You have Deleted successfully";
+			/*output = "You have Deleted successfully";*/
 			
 
 		} catch (Exception e) {
-			output = "Error while deleting the item.";
-			System.err.println(e.getMessage());
+			/*output = "Error while deleting the item.";
+			System.err.println(e.getMessage());*/
+			
+			output = "{\"status\":\"error\", \"data\":"
+					+ "\"Error while deleting the visiting details.\"}";
+					 System.err.println(e.getMessage()); 
 		}
 		return output;
 	}
