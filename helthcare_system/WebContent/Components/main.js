@@ -15,7 +15,6 @@ $(document).on("click","#btnSave",function(event)
 			$("#alertError").hide();
 
 			var status = validateVisitForm();
-
 			if (status != true) {
 				$("#alertError").text(status);
 				$("#alertError").show();
