@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 	
+<%-- 	
 <% 
 	System.out.println("\nTryingto process...");
 
@@ -43,7 +44,7 @@
 	}
 %>	
 	
-	
+	 --%>
 	
 	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -114,26 +115,32 @@
 						</div>
 						<input type="text" id="noPatients" name="noPatients">
 					</div>
-		
-					<div id="alertSuccess" class="alert alert-success"></div>
-					<div id="alertError" class="alert alert-danger"></div>
+					<br>
 					
 					<input name="btnReset" type="reset" value="Reset" class="btn btn-primary"  style="margin-left: 80px;width: 140px;"></th></tr>
-					<input	id="btnSave" name="btnSave" type="button" value="Save"class="btn btn-primary" style="width: 140px;">
-					<input type="hidden"id="hidVisitIDSave" name="hidVisitIDSave" value="">
+					<input	id="btnSave" name="btnSave" type="button" value="Save" class="btn btn-primary" style="width: 140px;">
+					<input type="hidden" id="hidVisitIDSave" name="hidVisitIDSave" value="">
 	</form>
-		<%
-			out.print(session.getAttribute("statusMsg"));
-		%>
-	</div>
 	
-	<div id=alertError" class="alert alert-danger">
+	<div id="alertSuccess" class="alert alert-success"></div>
+	<div id="alertError" class="alert alert-danger"></div>
 	
 	<br>
+	
+	<%-- 	<%
+			out.print(session.getAttribute("statusMsg"));
+		%> --%>
+	</div>
+	
+<!-- 	<div id=alertError" class="alert alert-danger">
+ -->	
+	<br>
+	<div id="divVisitsGrid">
 	<%
 		Visit visitObj = new Visit();
 		out.print(visitObj.readVisits());
 	%>
+	</div>
 	
 </body>
 </html>
