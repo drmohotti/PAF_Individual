@@ -77,6 +77,11 @@ public class VisitsAPI extends HttpServlet {
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		Visit visitObj = new Visit();
+
+		Map paras = getParasMap(request);
+		String output = visitObj.deleteVisits(paras.get("visiting_id").toString());
+		response.getWriter().write(output); 
 	}
 
 	private static Map getParasMap(HttpServletRequest request)
