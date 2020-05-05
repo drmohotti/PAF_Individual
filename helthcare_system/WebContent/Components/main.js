@@ -1,9 +1,9 @@
-/*
+
 $(document).ready(function() {
-	if ($("#alertSuccess").text().trim() == "")  
-	{  
-		$("#alertSuccess").hide();  
-	}  
+	//if ($("#alertSuccess").text().trim() == "")  
+	 
+	$("#alertSuccess").hide();  
+	 
 	$("#alertError").hide();
 });
 
@@ -21,9 +21,56 @@ $(document).on("click","#btnSave",function(event)
 				return;
 			}
 			
-			$("#formVisit").submit();
+			var type = ($("#hidVisitIDSave").val() == "") ? "POST" : "PUT";
+			
+			$.ajax(
+					{
+					 url : "VisitsAPI",
+					 type : type,
+					 data : $("#formVisit").serialize(),
+					 dataType : "text",
+					 complete : function(response, status)
+					 {
+					 onVisitSaveComplete(response.responseText, status);
+					 }
+					
+					});
+			
+			//$("#formVisit").submit();
 	
 		});
+
+function onVisitSaveComplete(response, status)
+{
+	if (status == "success")
+	{
+		var resultSet = JSON.parse(response);
+		
+		if (resultSet.status.trim() == "success")
+		{
+			$("#alertSuccess").text("Successfully saved.");
+			$("#alertSuccess").show();
+			$("#divVisitsGrid").html(resultSet.data);
+		} else if (resultSet.status.trim() == "error")
+		{
+			$("#alertError").text(resultSet.data);
+			$("#alertError").show();
+		}
+	} else if (status == "error")
+	{
+		$("#alertError").text("Error while saving.");
+		$("#alertError").show();
+	} else
+	{
+		$("#alertError").text("Unknown error while saving..");
+		$("#alertError").show();
+	}	
+	
+	$("#hidVisitIDSave").val("");
+	$("#formItem")[0].reset();
+}
+
+
 
 $(document).on("click",".btnUpdate",function(event) 
 		{
@@ -36,12 +83,56 @@ $(document).on("click",".btnUpdate",function(event)
 		});
 
 
-$(document).on("click", ".btnRemove", function(event) 
+/*$(document).on("click", ".btnRemove", function(event) 
 { 
 	$(this).closest(".visit").btnRemove();  
 	$("#alertSuccess").text("Removed successfully.");
 	$("#alertSuccess").show();
 }); 
+*/
+$(document).on("click", ".btnRemove", function(event)
+		{
+		 $.ajax(
+		 {
+		 url : "VisitsAPI",
+		 type : "DELETE",
+		 data : "visiting_id=" + $(this).data("visiting_id"),
+		 dataType : "text",
+		 complete : function(response, status)
+		 {
+		 onVisitDeleteComplete(response.responseText, status);
+		 }
+		 
+		});
+});
+function onVisitDeleteComplete(response, status)
+{
+if (status == "success")
+ 	{
+		var resultSet = JSON.parse(response);
+		if (resultSet.status.trim() == "success")
+		{
+			$("#alertSuccess").text("Successfully deleted.");
+			$("#alertSuccess").show();
+			
+			$("#divVisitsGrid").html(resultSet.data);
+		} else if (resultSet.status.trim() == "error")
+		{
+			$("#alertError").text(resultSet.data);
+			$("#alertError").show();
+		}
+ 	} else if (status == "error")
+ 	{
+ 		$("#alertError").text("Error while deleting.");
+ 		$("#alertError").show();
+ 	} else
+ 	{
+ 		$("#alertError").text("Unknown error while deleting..");
+ 		$("#alertError").show();
+ 	}
+}
+
+
 
 
 function validateVisitForm() 
@@ -70,33 +161,5 @@ function validateVisitForm()
 
 	return true;
 }
-*/
 
-function onVisitSaveComplete(response, status)
-{
-	if (status == "success")
-	{
-		var resultSet = JSON.parse(response);
-		
-		if (resultSet.status.trim() == "success")
-		{
-			$("#alertSuccess").text("Successfully saved.");
-			$("#alertSuccess").show();
-			$("#divItemsGrid").html(resultSet.data);
-		} else if (resultSet.status.trim() == "error")
-		{
-			$("#alertError").text(resultSet.data);
-			$("#alertError").show();
-		}
-	} else if (status == "error")
-	{
-		$("#alertError").text("Error while saving.");
-		$("#alertError").show();
-	} else
-	{
-		$("#alertError").text("Unknown error while saving..");
-		$("#alertError").show();
-	}	
-	$("#hidItemIDSave").val("");
-	$("#formItem")[0].reset();
-}
+

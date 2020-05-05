@@ -50,15 +50,13 @@ public class Visit {
 
 			String newVisits = readVisits(); 
 			output = "\nYou have Inserted successfully";
-			output = "{\"status\":\"success\", \"data\": \"" +
-					 newVisits + "\"}"; 
+			output = "{\"status\":\"success\", \"data\": \"" + newVisits + "\"}"; 
 			
 
 		} catch (Exception e) {
 			/*output = "\nError while inserting12";*/
 			
-			output = "{\"status\":\"error\", \"data\":"
-					+ "\"Error while inserting the Visiting Details.\"}"; 
+			output = "{\"status\":\"error\", \"data\":"	+ "\"Error while inserting the Visiting Details.\"}"; 
 			System.err.println(e.getMessage());
 			System.out.println("not inserted");
 
@@ -92,8 +90,7 @@ public class Visit {
 			con.close();
 
 			String newVisits = readVisits();
-			 output = "{\"status\":\"success\", \"data\": \"" +
-			 newVisits + "\"}"; 
+			 output = "{\"status\":\"success\", \"data\": \"" +	 newVisits + "\"}"; 
 			 
 			/*output = "\nYou have Updated successfully";
 			System.out.print("Updated");*/
@@ -149,10 +146,9 @@ public class Visit {
 						+ " type=\"submit\" value=\"Remove\" class=\"btn btn-danger\"> " 
 				+ "<input name=\"hidVisitIDDelete\" type=\"hidden\" value=\"" + visiting_id + "\">" + "</form></td></tr>"; */
 				
-				output += "<td><input name=\"btnUpdate\" type=\"button\"    value=\"Update\" class=\"btnUpdate btn btn-secondary\"></td>"
-						+ "<td><input name=\"btnRemove\" "
-						+ " type=\"button\" value=\"Remove\" class=\"btn btn-danger\"> " 
-				+  visiting_id + "\">" + "</form></td></tr>";
+				output += "<td><input name='btnUpdate' type='button'  value='Update' class='btnUpdate btn btn-secondary'></td>"
+						+ "<td><input name='btnRemove' type='button'  value='Remove' class='btn btn-danger' data-visitid='" 
+				+  visiting_id + "'>" + "</td></tr>";
 			}
 
 			con.close();
@@ -190,8 +186,7 @@ public class Visit {
 			con.close();
 			
 			String newVisits = readVisits();
-			 output = "{\"status\":\"success\", \"data\": \"" +
-			 newVisits + "\"}"; 
+			 output = "{\"status\":\"success\", \"data\": \"" + newVisits + "\"}"; 
 
 			/*output = "You have Deleted successfully";*/
 			
@@ -200,8 +195,7 @@ public class Visit {
 			/*output = "Error while deleting the item.";
 			System.err.println(e.getMessage());*/
 			
-			output = "{\"status\":\"error\", \"data\":"
-					+ "\"Error while deleting the visiting details.\"}";
+			output = "{\"status\":\"error\", \"data\": \"Error while deleting the visiting details.\"}";
 					 System.err.println(e.getMessage()); 
 		}
 		return output;
