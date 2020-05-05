@@ -72,6 +72,7 @@ public class Visit {
 		String output = "";
 		try {
 			Connection con = connect();
+			
 			if (con == null) {
 				return "\nError while connecting to the database";
 			}
@@ -90,14 +91,21 @@ public class Visit {
 			preparedStmt.execute();
 			con.close();
 
-			output = "\nYou have Updated successfully";
-			System.out.print("Updated");
+			String newVisits = readVisits();
+			 output = "{\"status\":\"success\", \"data\": \"" +
+			 newVisits + "\"}"; 
+			 
+			/*output = "\nYou have Updated successfully";
+			System.out.print("Updated");*/
 
 		} catch (Exception e) {
-			output = "\nError while updatinf";
+			/*output = "\nError while updatinf";
 			System.err.println(e.getMessage());
-			System.out.println("not ups");
+			System.out.println("not ups");*/
 
+			output = "{\"status\":\"error\", \"data\":"
+					+ "\"Error while updating the item.\"}";
+					 System.err.println(e.getMessage()); 
 		}
 
 		return output;
