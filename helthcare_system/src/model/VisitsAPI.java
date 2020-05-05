@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 public class VisitsAPI extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	Visit visitObj = new Visit();
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -44,7 +46,6 @@ public class VisitsAPI extends HttpServlet {
 		// TODO Auto-generated method stub
 		// doGet(request, response);
 
-		Visit visitObj = new Visit();
 		String output = visitObj.insertVisits(request.getParameter("hospital_name"),
 				request.getParameter("hospital_city"), request.getParameter("date"), request.getParameter("time"),
 				request.getParameter("noPatients"));
@@ -58,9 +59,9 @@ public class VisitsAPI extends HttpServlet {
 	protected void doPut(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Visit visitObj = new Visit();
 
 		Map paras = getParasMap(request);
+		//paras.get("hidVisitIDSave").toString(),
 		String output = visitObj.updateVisits(paras.get("visiting_id").toString(),
 		paras.get("hospital_name").toString(),
 		paras.get("hospital_city").toString(),
@@ -77,7 +78,6 @@ public class VisitsAPI extends HttpServlet {
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Visit visitObj = new Visit();
 
 		Map paras = getParasMap(request);
 		String output = visitObj.deleteVisits(paras.get("visiting_id").toString());
