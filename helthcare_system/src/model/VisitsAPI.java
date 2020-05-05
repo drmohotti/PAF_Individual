@@ -1,6 +1,9 @@
 package model;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,7 +38,16 @@ public class VisitsAPI extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		//doGet(request, response);
+		
+		Visit visitObj = new Visit();
+		String output = visitObj.insertVisits(request.getParameter("hospital_name"),
+				request.getParameter("hospital_city"),
+				request.getParameter("date"),
+				request.getParameter("time"),
+				request.getParameter("noPatients"));
+				
+				response.getWriter().write(output);
 	}
 
 	/**
