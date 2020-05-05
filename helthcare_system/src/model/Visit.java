@@ -56,9 +56,11 @@ public class Visit {
 		} catch (Exception e) {
 			/*output = "\nError while inserting12";*/
 			
-			output = "{\"status\":\"error\", \"data\":"	+ "\"Error while inserting the Visiting Details.\"}"; 
+			/*output = "{\"status\":\"error\", \"data\": \"Error while inserting the Visiting Details.\"}"; 
 			System.err.println(e.getMessage());
-			System.out.println("not inserted");
+			System.out.println("not inserted");*/
+			output = "{\"status\":\"error\", \"data\": \"Error while inserting the item.\"}";
+			System.err.println(e.getMessage());  
 
 		}
 
@@ -100,7 +102,7 @@ public class Visit {
 			//System.out.println("not ups");
 
 			output = "{\"status\":\"error\", \"data\":"
-					+ "\"Error while updating the item.\"}";
+					+ "\"Error while updating the Visit.\"}";
 					 System.err.println(e.getMessage()); 
 		}
 
@@ -136,7 +138,8 @@ public class Visit {
 				String noPatients = rs.getString("noPatients");
 
 				// Add into the html table
-				output += "<tr><td><input id='hidVisitIDUpdate' name='hidVisitIDUpdate'  type='hidden' value='"+ visiting_id + "'>" + hospital_name + "</td>";
+				output += "<tr><td><input id='hidVisitIDUpdate' name='hidVisitIDUpdate'  type='hidden' value='"+ visiting_id
+						+ "'>" + hospital_name + "</td>";
 				output += "<td>" + hospital_city + "</td>";
 				output += "<td>" + date + "</td>";
 				output += "<td>" + time + "</td>";
@@ -157,7 +160,7 @@ public class Visit {
 			output += "</table>";
 
 		} catch (Exception e) {
-			output = "Error while reading the items.";
+			output = "Error while reading the visit.";
 			System.err.println(e.getMessage());
 		}
 		return output;
@@ -193,7 +196,7 @@ public class Visit {
 			
 
 		} catch (Exception e) {
-			/*output = "Error while deleting the item.";
+			/*output = "Error while deleting the visit.";
 			System.err.println(e.getMessage());*/
 			
 			output = "{\"status\":\"error\", \"data\": \"Error while deleting the visiting details.\"}";

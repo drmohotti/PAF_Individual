@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 	
-<%-- 	
+<%-- 
 <% 
 	System.out.println("\nTryingto process...");
 
@@ -44,7 +44,7 @@
 	}
 %>	
 	
-	 --%>
+	  --%>
 	
 	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -62,10 +62,9 @@
 <body>
 	<h1>Doctor Visiting Details</h1>
 
-	<form id="formVisit" name="formVisit">
+	<form id="formVisit" name="formVisit" method="post" action="visits.jsp">
 	
-<!-- 	method="post" action="visits.jsp"
- -->		
+	
 					<!-- NAME -->
 					<div class="input-group input-group-sm mb-3" style="margin-left: 80px;">
 						<div class="input-group-prepend">
@@ -118,7 +117,7 @@
 					</div>
 					<br>
 					
-					<input name="btnReset" type="reset" value="Reset" class="btn btn-primary"  style="margin-left: 80px;width: 140px;"></th></tr>
+					<input name="btnReset" type="reset" value="Reset" class="btn btn-primary"  style="margin-left: 80px;width: 140px;">
 					
 					<input	id="btnSave" name="btnSave" type="button" value="Save" class="btn btn-primary" style="width: 140px;">
 					<input type="hidden" id="hidVisitIDSave" name="hidVisitIDSave" value="">
@@ -129,11 +128,6 @@
 	
 	<br>
 	
-			<%-- 	 	
-			<% out.print(session.getAttribute("statusMsg"));	%> 
-			<div id=alertError" class="alert alert-danger"> 
-			--%>
- 
 	<br>
 	<div id="divVisitsGrid">
 	<%

@@ -48,7 +48,9 @@ public class VisitsAPI extends HttpServlet {
 		// doGet(request, response);
 
 		String output = visitObj.insertVisits(request.getParameter("hospital_name"),
-				request.getParameter("hospital_city"), request.getParameter("date"), request.getParameter("time"),
+				request.getParameter("hospital_city"), 
+				request.getParameter("date"), 
+				request.getParameter("time"),
 				request.getParameter("noPatients"));
 
 		response.getWriter().write(output);
@@ -62,8 +64,8 @@ public class VisitsAPI extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		Map paras = getParasMap(request);
-		//paras.get("hidVisitIDSave").toString(),
-		String output = visitObj.updateVisits(paras.get("visiting_id").toString(),
+		
+		String output = visitObj.updateVisits(paras.get("hidVisitIDSave").toString(),
 		paras.get("hospital_name").toString(),
 		paras.get("hospital_city").toString(),
 		paras.get("date").toString(),
@@ -95,6 +97,7 @@ public class VisitsAPI extends HttpServlet {
 			scanner.close();
 			
 			String[] params = queryString.split("&");
+			
 			for (String param : params)
 			{ 	
 				String[] p = param.split("=");

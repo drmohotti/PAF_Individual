@@ -2,8 +2,7 @@
 $(document).ready(function() {
 	//if ($("#alertSuccess").text().trim() == "")  
 	 
-	$("#alertSuccess").hide();  
-	 
+	$("#alertSuccess").hide();  	 
 	$("#alertError").hide();
 });
 
@@ -20,7 +19,8 @@ $(document).on("click","#btnSave",function(event)
 				$("#alertError").show();
 				return;
 			}
-			
+			System.out.println("\nTryingto process...");
+
 			var type = ($("#hidVisitIDSave").val() == "") ? "POST" : "PUT";
 			
 			$.ajax(
@@ -31,7 +31,7 @@ $(document).on("click","#btnSave",function(event)
 					 dataType : "text",
 					 complete : function(response, status)
 					 {
-					 onVisitSaveComplete(response.responseText, status);
+						 onVisitSaveComplete(response.responseText, status);
 					 }
 					
 					});
@@ -50,7 +50,9 @@ function onVisitSaveComplete(response, status)
 		{
 			$("#alertSuccess").text("Successfully saved.");
 			$("#alertSuccess").show();
+			
 			$("#divVisitsGrid").html(resultSet.data);
+			
 		} else if (resultSet.status.trim() == "error")
 		{
 			$("#alertError").text(resultSet.data);
@@ -67,8 +69,9 @@ function onVisitSaveComplete(response, status)
 	}	
 	
 	$("#hidVisitIDSave").val("");
-	$("#formItem")[0].reset();
+	$("#formVisit")[0].reset();
 }
+
 
 
 
@@ -90,6 +93,7 @@ $(document).on("click",".btnUpdate",function(event)
 	$("#alertSuccess").show();
 }); 
 */
+
 $(document).on("click", ".btnRemove", function(event)
 		{
 		 $.ajax(
