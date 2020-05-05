@@ -96,9 +96,8 @@ public class Visit {
 			System.out.print("Updated");*/
 
 		} catch (Exception e) {
-			/*output = "\nError while updatinf";
-			System.err.println(e.getMessage());
-			System.out.println("not ups");*/
+			output = "\nError while updatinf";
+			//System.out.println("not ups");
 
 			output = "{\"status\":\"error\", \"data\":"
 					+ "\"Error while updating the item.\"}";
@@ -118,9 +117,11 @@ public class Visit {
 				return "Error while connecting to the database for reading.";
 			}
 
-			output = "<table border=\"1\"><tr><th>Hospital Name</th>" + "<th>Hospital City</th>"
-					+ "<th>Date</th><th>Time</th>" + "<th>No. of patients</th>" + "<th>Update</th><th>Remove</th>"
-					+ "</tr>";
+			output = "<table border=\"1\"><tr><th>Hospital Name</th>" 
+					+ "<th>Hospital City</th>"
+					+ "<th>Date</th><th>Time</th>" 
+					+ "<th>No. of patients</th>" 
+					+ "<th>Update</th> <th>Remove</th></tr>";
 
 			String query = "select * from doctor_visiting";
 			Statement stmt = (Statement) con.createStatement();
@@ -134,8 +135,8 @@ public class Visit {
 				String time = rs.getString("time");
 				String noPatients = rs.getString("noPatients");
 
-				output += "<tr><td><input id=\"hidVisitIDUpdate\" name=\"hidVisitIDUpdate\"     type=\"hidden\" value=\""
-						+ visiting_id + "\">" + hospital_name + "</td>";
+				// Add into the html table
+				output += "<tr><td><input id='hidVisitIDUpdate' name='hidVisitIDUpdate'  type='hidden' value='"+ visiting_id + "'>" + hospital_name + "</td>";
 				output += "<td>" + hospital_city + "</td>";
 				output += "<td>" + date + "</td>";
 				output += "<td>" + time + "</td>";
@@ -147,8 +148,8 @@ public class Visit {
 				+ "<input name=\"hidVisitIDDelete\" type=\"hidden\" value=\"" + visiting_id + "\">" + "</form></td></tr>"; */
 				
 				output += "<td><input name='btnUpdate' type='button'  value='Update' class='btnUpdate btn btn-secondary'></td>"
-						+ "<td><input name='btnRemove' type='button'  value='Remove' class='btn btn-danger' data-visitid='" 
-				+  visiting_id + "'>" + "</td></tr>";
+						+ "<td><input name='btnRemove' type='button'  value='Remove' class='btnRemove btn btn-danger' data-visiting_id='" 
+				+  visiting_id + "'>" + "</td>";
 			}
 
 			con.close();

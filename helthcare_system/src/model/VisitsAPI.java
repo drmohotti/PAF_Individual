@@ -1,5 +1,6 @@
 package model;
 
+import model.Visit;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
