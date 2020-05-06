@@ -137,34 +137,19 @@ public class Visit {
 				String time = rs.getString("time");
 				String noPatients = rs.getString("noPatients");
 
+	
 				// Add into the html table
-				/*output += "<tr><td><input id='hidVisitIDUpdate' name='hidVisitIDUpdate'  type='hidden' value=''"
-				+ visiting_id + "'>" + hospital_name + "</td>";
-				output += "<td>" + hospital_city + "</td>";
-				output += "<td>" + date + "</td>";
-				output += "<td>" + time + "</td>";
-				output += "<td>" + noPatients + "</td>";*/
-
-				/*output += "<td><input name=\"btnUpdate\" type=\"button\"    value=\"Update\" class=\"btnUpdate btn btn-secondary\"></td>"
-						+ "<td><form method=\"post\" action=\"visits.jsp\">" + "<input name=\"btnRemove\" "
-						+ " type=\"submit\" value=\"Remove\" class=\"btn btn-danger\"> " 
-				+ "<input name=\"hidVisitIDDelete\" type=\"hidden\" value=\"" + visiting_id + "\">" + "</form></td></tr>"; */
-				
-				/*output += "<td><input name='btnUpdate' type='button'  value='Update' class='btnUpdate btn btn-secondary'></td>"
-						+ "<td><input name='btnRemove' type='button'  value='Remove' class='btnRemove btn btn-danger' data-visiting_id='" 
-				+  visiting_id + "'>" + "</td>";*/
-				
-				output += "<tr><td><input id=\"hidVisitIDUpdate\" name=\"hidVisitIDUpdate\"     type=\"hidden\" value=\""
-						+ visiting_id + "\">" + hospital_name + "</td>";
+				 output += "<tr><td><input id='hidVisitIDUpdate' name='hidVisitIDUpdate' type='hidden'value='" + visiting_id + "'>" 
+				+ hospital_name + "</td>";
 				output += "<td>" + hospital_city + "</td>";
 				output += "<td>" + date + "</td>";
 				output += "<td>" + time + "</td>";
 				output += "<td>" + noPatients + "</td>";
 				
-				output += "<td><input name=\"btnUpdate\" type=\"button\"    value=\"Update\" class=\"btnUpdate btn btn-secondary\"></td>"
-						+ "<td><form method=\"post\" action=\"visits.jsp\">" + "<input name=\"btnRemove\" "
-						+ " type=\"submit\" value=\"Remove\" class=\"btnRemove btn btn-danger\"> " 
-				+ "<input name=\"hidVisitIDDelete\" type=\"hidden\" value=\"" + visiting_id + "\">" + "</form></td></tr>"; 
+				// buttons
+				output += "<td><input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-secondary'></td> "
+						+ "<td><input name='btnRemove' type='button' value='Remove' class='btnRemove btn btn-danger'  data-visiting_id='" 
+						+ visiting_id + "'>" + "</td></tr>";
 			}
 
 			con.close();

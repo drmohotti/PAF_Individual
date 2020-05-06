@@ -1,6 +1,5 @@
 
 $(document).ready(function() {
-	//if ($("#alertSuccess").text().trim() == "")  
 	 
 	$("#alertSuccess").hide();  	 
 	$("#alertError").hide();
@@ -20,7 +19,6 @@ $(document).on("click","#btnSave",function(event)
 				$("#alertError").show();
 				return;
 			}
-			System.out.println("\nTryingto process...");
 
 			var type = ($("#hidVisitIDSave").val() == "") ? "POST" : "PUT";
 			
@@ -33,14 +31,12 @@ $(document).on("click","#btnSave",function(event)
 					 dataType : "text",
 					 complete : function(response, status)
 					 {
-						 onVisitSaveComplete(response.responseText, status);
+					 onVisitSaveComplete(response.responseText, status);
 					 }
-					
 					});
 			
-			//$("#formVisit").submit();
-	
-		});
+			$("#formChannel").submit();
+			});
 
 function onVisitSaveComplete(response, status)
 {
@@ -143,6 +139,7 @@ if (status == "success")
 
 function validateVisitForm() 
 {
+	
 	if ($("#hospital_name").val().trim() == "") 
 	{
 		return "Insert Hospital Name.";
