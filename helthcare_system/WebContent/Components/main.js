@@ -14,6 +14,7 @@ $(document).on("click","#btnSave",function(event)
 			$("#alertError").hide();
 
 			var status = validateVisitForm();
+			
 			if (status != true) {
 				$("#alertError").text(status);
 				$("#alertError").show();
@@ -22,6 +23,7 @@ $(document).on("click","#btnSave",function(event)
 			System.out.println("\nTryingto process...");
 
 			var type = ($("#hidVisitIDSave").val() == "") ? "POST" : "PUT";
+			
 			
 			$.ajax(
 					{
